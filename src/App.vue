@@ -4,6 +4,7 @@ import 'vue3-toastify/dist/index.css';
 import EmptyHeader from "@/components/layout/emptyHeader.vue";
 import BottomMenu from "@/components/layout/bottomMenu.vue";
 import Default from "@/layouts/default.vue";
+import DownloadButton from "@/components/layout/downloadButton.vue";
 localStorage.theme = 'light'
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -15,6 +16,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
 
 <template>
   <div class="w-full min-h-screen overflow-y-auto">
+    <DownloadButton />
     <Default v-if="$route.fullPath !== '/'" :name="layout">
         <RouterView />
         <BottomMenu />

@@ -5,10 +5,14 @@ import axios from "@/utils/axios.js";
 export const useOrdersStore = defineStore('orders', () => {
     const result = ref(null);
     const resultDetails = ref(null);
+    const resultAccept = ref(null);
+    const resultComplete = ref(null);
 
     return {
         result,
         resultDetails,
+        resultAccept,
+        resultComplete,
         listOrders(params) {
             axios.get(`/doctors/my-orders`, { params })
                 .then(response => {
@@ -43,14 +47,29 @@ export const useOrdersStore = defineStore('orders', () => {
             axios.put(`/orders/${id}/accept`)
                 .then(response => {
                     if (response.status === 200) {
-                        resultDetails.value = response.data
+                        resultAccept.value = response.data
                     } else {
-                        resultDetails.value = false
+                        resultAccept.value = false
                     }
                 })
                 .catch(error => {
                     console.error(error);
-                    resultDetails.value = false
+                    resultAccept.value = false
+                });
+        },
+
+        completeOrder(id) {
+            axios.put(`/orders/${id}/complete`)
+                .then(response => {
+                    if (response.status === 200) {
+                        resultComplete.value = response.data
+                    } else {
+                        resultComplete.value = false
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    resultComplete.value = false
                 });
         }
     }

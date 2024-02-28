@@ -7,6 +7,7 @@ import {storeToRefs} from "pinia";
 import Orders from "@/layouts/orders.vue";
 import Spinner from "@/components/general/spinner.vue";
 import {useRoute} from "vue-router";
+import {toast} from "vue3-toastify";
 
 const layout = ref("profile");
 const route = useRoute()
@@ -18,9 +19,31 @@ const orders = useOrdersStore()
 
 const pending = ref(true)
 
+const notify = (text, type) => {
+  toast(text, {
+    type: type,
+    autoClose: 1000,
+  });
+}
+
 const acceptOrderLocal = async () => {
-  await orders.acceptOrder(orders.resultDetails.user_order_id)
-  await orders.orderDetails(route.params.id)
+  await orders.acceptOrder(orders.resultDetails.id)
+  if(orders.resultAccept !== false) {
+    notify('Заказ принят', 'success')
+    await orders.orderDetails(route.params.id)
+  } else {
+    notify('Произошла ошибка', 'error')
+  }
+}
+
+const completeOrderLocal = async () => {
+  await orders.completeOrder(orders.resultDetails.user_order_id)
+  if(orders.resultComplete !== false) {
+    notify('Заказ завершен', 'success')
+    await orders.orderDetails(route.params.id)
+  } else {
+    notify('Произошла ошибка', 'error')
+  }
 }
 
 onMounted(async () => {
@@ -42,8 +65,20 @@ onMounted(async () => {
             Заказ №{{ orders.resultDetails.user_order.order_number }}
           </p>
         </div>
-        <p class="text-sm py-1 px-4 bg-mainColor rounded-full text-white">
-          {{ orders.resultDetails.status }}
+        <p
+            v-if="orders.resultDetails.status === 'created'"
+            class="text-sm py-1 px-4 bg-mainColor rounded-full text-white">
+          Создан
+        </p>
+        <p
+            v-if="orders.resultDetails.status === 'in_process'"
+            class="text-sm py-1 px-4 bg-orange-400 rounded-full text-white">
+          В процессе
+        </p>
+        <p
+            v-if="orders.resultDetails.status === 'completed'"
+            class="text-sm py-1 px-4 bg-green-400 rounded-full text-white">
+          Завершен
         </p>
       </div>
       <Spinner v-else/>
@@ -156,6 +191,12 @@ onMounted(async () => {
         <p
             v-if="orders.resultDetails.status === 'created'"
             @click="acceptOrderLocal"
+            class="bg-[#1EDA00] cursor-pointer text-white mt-4 text-center py-2 rounded-lg">
+          Принять заказ
+        </p>
+        <p
+            v-if="orders.resultDetails.status === 'in_process'"
+            @click="completeOrderLocal"
             class="bg-[#1EDA00] cursor-pointer text-white mt-4 text-center py-2 rounded-lg">
           Принять заказ
         </p>
