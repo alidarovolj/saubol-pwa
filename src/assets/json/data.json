@@ -1,0 +1,91 @@
+{
+  "id": 36,
+  "user": {
+    "id": 64,
+    "name": "Врач Врачевич",
+    "email": "alidarovolzhas@out.com",
+    "img": null,
+    "iin": "982374321415",
+    "phone_number": "87475678372",
+    "is_phone_verified": false
+  },
+  "experience": 3,
+  "is_female": false,
+  "specialization": {
+    "id": 12,
+    "name": "Анестезиолог-реаниматолог"
+  },
+  "specialization_details": [
+    "Деталь"
+  ],
+  "current_day": "2024-02-06",
+  "schedule": [
+    {
+      "id": 11,
+      "weekday_number": "3",
+      "date": "2021-02-06",
+      "times": [
+        {
+          "id": 6,
+          "start": "10:00:00",
+          "end": "12:00:00"
+        }
+      ],
+      "weekday": "Понедельник",
+      "duration": 45
+    },
+    {
+      "id": 12,
+      "weekday_number": "2",
+      "date": "2021-02-05",
+      "times": [
+        {
+          "id": 7,
+          "start": "11:00:00",
+          "end": "12:00:00"
+        }
+      ],
+      "weekday": "Вторник",
+      "duration": 45
+    },
+    {
+      "id": 13,
+      "weekday_number": "3",
+      "times": [
+        {
+          "id": 8,
+          "start": "13:00:00",
+          "end": "14:00:00"
+        }
+      ],
+      "weekday": "Среда",
+      "duration": 45
+    },
+    {
+      "id": 14,
+      "weekday_number": "4",
+      "times": [
+        {
+          "id": 9,
+          "start": "15:00:00",
+          "end": "16:00:00"
+        }
+      ],
+      "weekday": "Четверг",
+      "duration": 45
+    },
+    {
+      "id": 15,
+      "weekday_number": "5",
+      "times": [
+        {
+          "id": 10,
+          "start": "17:00:00",
+          "end": "18:00:00"
+        }
+      ],
+      "weekday": "Пятница",
+      "duration": 45
+    }
+  ]
+}
