@@ -44,7 +44,7 @@ export const useOrdersStore = defineStore('orders', () => {
         },
 
         acceptOrder(id) {
-            axios.put(`/orders/${id}/accept`)
+            axios.put(`/doctors/${id}/accept`)
                 .then(response => {
                     if (response.status === 200) {
                         resultAccept.value = response.data
@@ -59,7 +59,7 @@ export const useOrdersStore = defineStore('orders', () => {
         },
 
         completeOrder(id) {
-            axios.put(`/orders/${id}/complete`)
+            axios.put(`/doctors/${id}/complete`)
                 .then(response => {
                     if (response.status === 200) {
                         resultComplete.value = response.data

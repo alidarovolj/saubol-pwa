@@ -22,7 +22,7 @@ const pending = ref(true)
 
 onMounted(async () => {
   await nextTick()
-  router.push({ query: { ...router.currentRoute.value.query, type: 'created' } })
+  await router.push({ query: { ...router.currentRoute.value.query, type: 'created' } })
   await orders.listOrders(route.query)
   pending.value = false
 })

@@ -37,7 +37,7 @@ const acceptOrderLocal = async () => {
 }
 
 const completeOrderLocal = async () => {
-  await orders.completeOrder(orders.resultDetails.user_order_id)
+  await orders.completeOrder(orders.resultDetails.id)
   if(orders.resultComplete !== false) {
     notify('Заказ завершен', 'success')
     await orders.orderDetails(route.params.id)
@@ -198,7 +198,7 @@ onMounted(async () => {
             v-if="orders.resultDetails.status === 'in_process'"
             @click="completeOrderLocal"
             class="bg-[#1EDA00] cursor-pointer text-white mt-4 text-center py-2 rounded-lg">
-          Принять заказ
+          Завершить заказ
         </p>
       </Orders>
     </div>

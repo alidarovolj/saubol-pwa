@@ -15,7 +15,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
 </script>
 
 <template>
-  <div class="w-full min-h-screen overflow-y-auto">
+  <div class="w-full min-h-screen">
     <DownloadButton />
     <Default v-if="$route.fullPath !== '/'" :name="layout">
         <RouterView />
