@@ -1,0 +1,8 @@
+{
+  "appId": "saubol.pwa",
+  "appName": "saubol-pwa",
+  "webDir": "build",
+  "server": {
+    "androidScheme": "https"
+  }
+}

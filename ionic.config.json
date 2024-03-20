@@ -1,0 +1,7 @@
+{
+  "name": "saubol-pwa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
