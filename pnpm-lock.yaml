@@ -23,6 +23,12 @@ dependencies:
   '@capacitor/status-bar':
     specifier: 5.0.7
     version: 5.0.7(@capacitor/core@5.7.3)
+  '@ionic/vue':
+    specifier: ^7.8.1
+    version: 7.8.1
+  '@ionic/vue-router':
+    specifier: ^7.8.1
+    version: 7.8.1
   daisyui:
     specifier: ^4.6.0
     version: 4.7.2(postcss@8.4.35)
@@ -1553,6 +1559,14 @@ packages:
       - supports-color
     dev: false
 
+  /@ionic/core@7.8.1:
+    resolution: {integrity: sha512-SsoDy0HaifCcWBlcyRIpTceboz6tSg4gjNr/LRGJyg+r2bWdoG3jeuQDg0Affox8dar7QvODk3AWO/7RFWLOfg==}
+    dependencies:
+      '@stencil/core': 4.13.0
+      ionicons: 7.3.0
+      tslib: 2.6.2
+    dev: false
+
   /@ionic/utils-array@2.1.6:
     resolution: {integrity: sha512-0JZ1Zkp3wURnv8oq6Qt7fMPo5MpjbLoUoa9Bu2Q4PJuSDWM8H8gwF3dQO7VTeUj3/0o1IB1wGkFWZZYgUXZMUg==}
     engines: {node: '>=16.0.0'}
@@ -1657,6 +1671,19 @@ packages:
       wrap-ansi: 7.0.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@ionic/vue-router@7.8.1:
+    resolution: {integrity: sha512-o0TAFStZ6VuD01iq3oMJZiwhzRSlstOhOBheu08RBbZHAnQvY28kKsQypTFRYiQv4E6Ayc95b7ZeayMQt3wu+w==}
+    dependencies:
+      '@ionic/vue': 7.8.1
+    dev: false
+
+  /@ionic/vue@7.8.1:
+    resolution: {integrity: sha512-jEOss4oslEB38ASaBsYNRMpkLq6IYWmmscHAR01reEBiLt1144SqxQ3y4mhgHBdAP7gZrULMFdVTDUdJdlSq9Q==}
+    dependencies:
+      '@ionic/core': 7.8.1
+      ionicons: 7.3.0
     dev: false
 
   /@isaacs/cliui@8.0.2:
@@ -1892,6 +1919,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@stencil/core@4.13.0:
+    resolution: {integrity: sha512-gg+gtBWekQ08mDja8GVAUHNu+rrFhQaKZDvfhnS3l/5JbYiJddTimuDPPhuc0sR0JZL1iRdJTJSa+JbvmnQ1cQ==}
+    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
+    dev: false
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
@@ -3057,6 +3090,12 @@ packages:
       hasown: 2.0.1
       side-channel: 1.0.5
     dev: true
+
+  /ionicons@7.3.0:
+    resolution: {integrity: sha512-l9quySYi+o4T6mFzhKRyU/1nKc2Zs0zxs7jWcq9iVRhRPQondV11jYqLTed0lVVXHfGrBCfnedKl9D6BCnA1UQ==}
+    dependencies:
+      '@stencil/core': 4.13.0
+    dev: false
 
   /is-array-buffer@3.0.4:
     resolution: {integrity: sha512-wcjaerHw0ydZwfhiKbXJWLDY8A7yV7KhjQOpb83hGgGfId/aQa4TOvwyzn2PuswW2gPCYEL/nEAiSVpdOj1lXw==}

@@ -7,6 +7,7 @@ import {useVuelidate} from "@vuelidate/core";
 import {required} from "@vuelidate/validators";
 import {useUserStore} from "@/stores/user.js";
 import {storeToRefs} from "pinia";
+import {IonPage, IonContent} from '@ionic/vue';
 import axios from "@/utils/axios";
 import router from "@/router";
 
@@ -74,75 +75,38 @@ const sendForm = async () => {
 </script>
 
 <template>
-  <div class="relative h-screen w-full">
-    <div class="flex justify-between h-full items-center">
-      <div class="w-full bg-[#F6F6F7] relative h-full flex items-center justify-center">
-        <form
-            @submit.prevent="sendForm"
-            class="w-full lg:w-3/5 mx-auto px-4 lg:px-0 relative z-20">
-          <img
-              class="mx-auto mb-5"
-              src="@/assets/img/main-color-logo.svg"
-              alt=""
-          >
-          <div class="mb-5">
-            <p class="text-sm mb-1">
-              Номер телефона или Email:
-            </p>
-            <input
-                class="w-full border border-[#E5E5E5] bg-white rounded-lg px-3 py-2"
-                type="text"
-                :class="{'border-red-500': v$.login.$error}"
-                v-model="form.login"
-                placeholder="Введите email"/>
-            <p
-                v-if="v$.login.$error"
-                class="text-red-500 text-xs">
-              Пожалуйста заполните данное поле
-            </p>
+  <ion-page>
+    <ion-content class="ion-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="text-center">Авторизация</h1>
           </div>
-          <div class="mb-5">
-            <p class="text-sm mb-1">
-              Пароль:
-            </p>
-            <div class="relative">
-              <input
-                  class="w-full border border-[#E5E5E5] bg-white rounded-lg px-3 py-2"
-                  :type="passwordFieldType"
-                  v-model="form.password"
-                  :class="{'border-red-500': v$.password.$error}"
-                  placeholder="Введите пароль"/>
-              <IconEyeClosed
-                  v-if="passwordFieldType === 'text'"
-                  @click="switchVisibility"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-              />
-              <IconEye
-                  v-if="passwordFieldType === 'password'"
-                  @click="switchVisibility"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-              />
-              <p
-                  v-if="v$.password.$error"
-                  class="text-red-500 text-xs">
-                Пожалуйста заполните данное поле
-              </p>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <form @submit.prevent="sendForm">
+              <div class="mb-3">
+                <label for="login" class="form-label">Логин</label>
+                <input type="text" class="form-control" id="login" v-model="form.login">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Пароль</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="password" v-model="form.password" :type="passwordFieldType">
+                  <button class="btn btn-outline-secondary" type="button" @click="switchVisibility">
+                    <IconEye v-if="passwordFieldType === 'password'"/>
+                    <IconEyeClosed v-else/>
+                  </button>
+                </div>
+              </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary" :disabled="loading">Войти</button>
+              </div>
+            </form>
           </div>
-          <div class="flex justify-end mb-5">
-            <router-link
-                class="text-mainColor text-sm text-end"
-                to="/">
-              Забыли пароль?
-            </router-link>
-          </div>
-          <button
-              type="submit"
-              class="bg-mainColor py-3 text-white rounded-md w-full">
-            Войти
-          </button>
-        </form>
+        </div>
       </div>
-    </div>
-  </div>
+    </ion-content>
+  </ion-page>
 </template>
